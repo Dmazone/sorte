@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  templates/index.html — 빌드 시스템용 원본 HTML 뼈대 파일
+  ============================================================
+  ★ 이 파일을 직접 열어도 작동하지 않습니다.
+    반드시 build.js를 실행하여 dist/ 폴더의 결과물을 사용하세요.
+    (node build.js 명령어 실행)
+  ★ {{PLACEHOLDER}} 형태의 텍스트는 build.js가 자동으로 교체합니다.
+  ============================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── 기본 SEO 태그 ──────────────────────────────────── -->
+  <title>🌟 Descubra Seu Orixá do Dia — Grátis e Instantâneo! 🇧🇷</title>
+  <meta name="description" content="Qual Orixá está te protegendo hoje? E qual K-Food traz sorte pra você? Viral no Brasil! Descubra grátis agora~ 🌿✨" />
+  <meta name="theme-color" content="#16a34a" />
+
+  <!-- ── Open Graph (WhatsApp / Facebook 링크 미리보기) ───
+       WhatsApp에서 링크를 공유하면 이 태그들이 미리보기 카드로 표시됩니다.
+       OG 이미지는 1200×630px 권장 (dist/ 폴더 옆에 이미지 파일을 두세요)
+  ──────────────────────────────────────────────────────── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="🌟 Descubra Seu Orixá do Dia — Grátis e Instantâneo! 🇧🇷" />
+  <meta property="og:description" content="Qual Orixá está te protegendo hoje? E qual K-Food traz sorte pra você? Viral no Brasil! Descubra grátis agora~ 🌿✨" />
+  <meta property="og:image"       content="https://dmazone.github.io/sorte/og.jpg" />
+  <meta property="og:url"         content="https://dmazone.github.io/sorte" />
+  <meta property="og:site_name"   content="Global Lucky Vending Machine" />
+  <meta property="og:locale"      content="pt-BR" />
+
+  <!-- ── Twitter/X 카드 태그 ──────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="🌟 Descubra Seu Orixá do Dia — Grátis e Instantâneo! 🇧🇷" />
+  <meta name="twitter:description" content="Qual Orixá está te protegendo hoje? E qual K-Food traz sorte pra você? Viral no Brasil! Descubra grátis agora~ 🌿✨" />
+  <meta name="twitter:image"       content="https://dmazone.github.io/sorte/og.jpg" />
+
+  <!-- ── Tailwind CSS CDN ────────────────────────────────
+       백엔드리스 단일 HTML 구조이므로 CDN 방식을 사용합니다.
+       추후 성능 최적화 시 빌드 프로세스에 Tailwind CLI를 추가하세요.
+  ──────────────────────────────────────────────────────── -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ── 글로벌 광고 스크립트 플레이스홀더 ──────────────
+       ★ Adsterra 광고 코드 삽입 방법:
+          1. adsterra.com 대시보드 로그인
+          2. "Create New Zone" → Pop-under 또는 Native Banner 선택
+          3. 발급된 <script> 코드를 아래 주석 사이에 붙여넣기
+          4. build.js를 다시 실행 (node build.js)
+       ★ 광고 코드 없이도 앱은 정상 작동합니다 (3초 폴백 타이머가 대신합니다).
+  ──────────────────────────────────────────────────────── -->
+  <script src="https://pl30266860.effectivecpmnetwork.com/18/6a/c8/186ac8497a54269d48446588828ff834.js"></script>
+<script src="https://pl30266863.effectivecpmnetwork.com/b0/f9/5c/b0f95c6659075e426bc04c507ff6ae00.js"></script>
+
+  <!-- ── Social Bar 클릭 가로채기 방지 ─────────────────
+       Adsterra Social Bar의 invoke_layer(투명 전체화면 <a>)가
+       CTA 버튼 클릭을 가로채는 문제를 수정합니다.
+       광고 수익에는 영향 없음 — 팝언더/배너/소셜바 알림은 정상 유지.
+  ──────────────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      function patchSocialBarOverlay() {
+        document.querySelectorAll('a').forEach(function (a) {
+          var cs = getComputedStyle(a);
+          if (cs.position === 'fixed' &&
+              parseFloat(cs.width)  > window.innerWidth  * 0.5 &&
+              parseFloat(cs.height) > window.innerHeight * 0.3) {
+            a.style.setProperty('pointer-events', 'none', 'important');
+          }
+        });
+      }
+      setTimeout(patchSocialBarOverlay, 600);
+      setInterval(patchSocialBarOverlay, 2000);
+    })();
+  </script>
+
+  <!-- ── 국가별 Config 스크립트 (build.js가 자동 주입) ──
+       빌드 시 config-in.js 또는 config-id.js가 여기에 인라인 삽입됩니다.
+       이 스크립트가 window.APP_CONFIG를 정의합니다.
+  ──────────────────────────────────────────────────────── -->
+  <script>
+/* ====================================================
+ * BRAZIL 스킨 설정 (자동 생성 - 수정하지 마세요)
+ * 원본: src/config-br.js
+ * ==================================================== */
+// ============================================================
+// config-br.js — 브라질(Brazil) 스킨 설정 파일
+// ============================================================
+// 벤치마크: joaodesouza.com, tarot.tv (브라질 영성 앱)
+// 콘셉트: Orixá 수호령 매칭 + 오늘의 K-Food 트렌드 룰렛
+// 타겟: 브라질 Z세대, 영성/Umbanda 관심층, K-트렌드 팬
+// 언어: 포르투갈어(브라질 구어체)
+// ============================================================
+
+window.APP_CONFIG = {
+  country: 'brazil',
+  lang: 'pt-BR',
+
+  og: {
+    title: "🌟 Descubra Seu Orixá do Dia — Grátis e Instantâneo! 🇧🇷",
+    description: "Qual Orixá está te protegendo hoje? E qual K-Food traz sorte pra você? Viral no Brasil! Descubra grátis agora~ 🌿✨",
+    image: "https://dmazone.github.io/sorte/og.jpg",
+    url: "https://dmazone.github.io/sorte"
+  },
+
+  ui: {
+    appTitle: "✨ Orixá do Dia & K-Food",
+    appSubtitle: "Quem te protege hoje? E o que comer? 🌿💛",
+    heroEmoji: "🌿💛✨",
+    ctaButton: "✨ Descobrir Meu Orixá Agora! 🌿",
+    ctaSubtext: "Viral no Brasil! 🔥 100% Grátis — sem cadastro!",
+    resultTitle: "💛 Seu Orixá de Hoje! 💛",
+    shareButton: "🟢 Compartilhar no WhatsApp & Marcar 3 Amigos!",
+    shareSubtext: "Marca pelo menos 3 amigos pra eles descobrirem o Orixá deles! 🔥💛",
+    retryButton: "🔄 Consultar de Novo",
+    adNotice: "Chamando seu Orixá protetor... ✨",
+    smartlinkButton: "✨ Descobrir Mais Sorte e Axé →",
+    koreaBadge: "🇰🇷 Tendência na Coreia · Viral no Brasil 🇧🇷",
+    selectorLabel: null,
+    selectorOptions: []
+  },
+
+  resultPools: {
+
+    orixa: [
+      {
+        emoji: "💛🌊",
+        name: "Oxum",
+        rarity: "✨ RARO",
+        personalityTag: "💕 Amorosa & Abençoada",
+        desc: "Oxum está te abençoando hoje! A deusa do amor, da beleza e do dinheiro está do seu lado. Quando Oxum aparece, prepare-se para atrair tudo de bom: relacionamentos lindos, oportunidades incríveis e uma energia completamente irresistível. Seu axé está altíssimo! 💛✨"
+      },
+      {
+        emoji: "💙🌊",
+        name: "Iemanjá",
+        rarity: "💎 SUPER RARO",
+        personalityTag: "🌊 Mãe Protetora",
+        desc: "A Rainha do Mar, Iemanjá, está te abraçando com toda sua força! Você é uma alma especial que cuida dos outros com amor profundo e genuíno. Hoje sinta que as ondas da vida estão completamente a seu favor — fluxo, calma e proteção total de cima a baixo! 💙🌊"
+      },
+      {
+        emoji: "⚡👑",
+        name: "Xangô",
+        rarity: "💎 SUPER RARO",
+        personalityTag: "⚖️ Justiceiro & Poderoso",
+        desc: "Xangô, o rei da justiça e do trovão, está contigo hoje! Você tem um senso de justiça muito forte e as pessoas te respeitam profundamente por isso. Hoje as coisas vão se alinhar perfeitamente no seu favor — o universo está corrigindo qualquer injustiça que você tenha enfrentado! ⚡👑"
+      },
+      {
+        emoji: "🔴⚔️",
+        name: "Ogum",
+        rarity: "✨ RARO",
+        personalityTag: "🔥 Guerreiro Invencível",
+        desc: "Ogum, o guerreiro dos caminhos, está abrindo todas as portas pra você hoje! Nada pode te parar quando Ogum está do seu lado. Enfrente cada obstáculo de frente com coragem total — você tem a força do ferro e o calor do fogo! 🔴⚔️"
+      },
+      {
+        emoji: "🌪️💜",
+        name: "Iansã",
+        rarity: "✨ RARO",
+        personalityTag: "🌪️ Independente & Feroz",
+        desc: "Iansã, a deusa dos ventos e das tempestades, está te energizando hoje! Você é alguém que não tem medo de mudança — na verdade, você prospera nela como ninguém. Abrace as transformações que aparecerem: cada ventania te leva para um lugar muito melhor! 🌪️💜"
+      },
+      {
+        emoji: "🌿🏹",
+        name: "Oxóssi",
+        rarity: "⭐ COMUM",
+        personalityTag: "🎯 Foco & Precisão",
+        desc: "Oxóssi, o caçador das matas, te dá foco e precisão perfeitos hoje! Você é alguém que quando decide algo, vai até o fim sem olhar para trás. A floresta da vida está cheia de oportunidades incríveis — você tem o arco e a flecha certos pra acertar exatamente no alvo! 🌿🏹"
+      },
+      {
+        emoji: "🤍🕊️",
+        name: "Oxalá",
+        rarity: "💎 SUPER RARO",
+        personalityTag: "✨ Paz & Sabedoria Ancestral",
+        desc: "Oxalá, o pai criador de tudo, está te abençoando com paz e sabedoria profunda hoje! Você carrega uma sabedoria que vai além da sua idade. Nas conversas de hoje, suas palavras terão um peso especial e transformador — as pessoas vão te ouvir com muito respeito e admiração! 🤍✨"
+      },
+      {
+        emoji: "🟤🌸",
+        name: "Nanã",
+        rarity: "✨ RARO",
+        personalityTag: "🌿 Ancestral & Intuitiva",
+        desc: "Nanã, a mais velha e sábia das divindades, te abraça com carinho hoje! Você tem uma profundidade emocional que poucos conseguem alcançar. Hoje confie na sua intuição bem mais do que nos seus pensamentos racionais — seu coração já sabe exatamente o caminho certo! 🟤✨"
+      },
+      {
+        emoji: "💚🔮",
+        name: "Exú",
+        rarity: "⭐ COMUM",
+        personalityTag: "🚀 Abre Todos os Caminhos",
+        desc: "Exú, o mensageiro que abre todos os caminhos possíveis, está contigo hoje! As comunicações fluem perfeitamente e as portas que estavam fechadas vão se abrir uma a uma. Fique muito atento às oportunidades — Exú vai colocar exatamente as pessoas certas no seu caminho hoje! 💚🔮"
+      },
+      {
+        emoji: "💃🌹",
+        name: "Pomba Gira",
+        rarity: "🌟 RARO",
+        personalityTag: "💖 Magnética & Transformadora",
+        desc: "Pomba Gira, a rainha da transformação e do amor, está com você hoje! Sua energia magnética está nas alturas — você atrai olhares, admiração e oportunidades incríveis sem nem perceber. Abrace seu poder com tudo que você tem e brilhe sem pedir desculpa a ninguém! 💃🌹"
+      }
+    ],
+
+    kFood: [
+      {
+        emoji: "🍜🔥",
+        name: "Buldak Ramen",
+        tag: "#VIRAL",
+        desc: "O mais picante da Coreia chegou pra você! Nível de energia de hoje: MÁXIMO 🔥 Que tal fazer o desafio do buldak com os amigos e postar?"
+      },
+      {
+        emoji: "🧋💜",
+        name: "Bubble Tea de Taro",
+        tag: "#FAVORITO",
+        desc: "Roxinho, docinho e completamente fofo! Igual ao seu mood de hoje. Pede menos açúcar e extra bolinha~ 🧋"
+      },
+      {
+        emoji: "🌶️🧀",
+        name: "Topokki com Queijo",
+        tag: "#QUENTE",
+        desc: "A combinação doce-picante-cremosa que vicia demais! Assim como você — complexo e absolutamente delicioso! 😄"
+      },
+      {
+        emoji: "🍗✨",
+        name: "Korean Fried Chicken",
+        tag: "#CAMPEÃO",
+        desc: "Frito duas vezes, crocante pra caramba! Hoje você precisa de algo que seja bem satisfatório. Não esquece o molhinho gochujang! 🍗"
+      },
+      {
+        emoji: "🍵🌿",
+        name: "Matcha Latte",
+        tag: "#AESTHETIC",
+        desc: "Chique, relaxante e fotogênico demais! Você precisa desacelerar hoje e curtir cada momento com calma. Tira foto antes de beber — vai bombar! 📸🍵"
+      },
+      {
+        emoji: "🍱💪",
+        name: "Kimbap de Carne",
+        tag: "#SAUDÁVEL",
+        desc: "Completo, equilibrado e nutritivo! Hoje é seu dia de ser produtivo e organizado. Você vai conquistar muita coisa! 💪"
+      },
+      {
+        emoji: "🥞💛",
+        name: "Hotteok",
+        tag: "#DOCE",
+        desc: "Panqueca coreana quentinha com surpresa doce escondida lá dentro! Tem uma surpresa muito boa esperando por você hoje~ 🥞✨"
+      },
+      {
+        emoji: "🥩🔥",
+        name: "Samgyupsal BBQ",
+        tag: "#SOCIAL",
+        desc: "Hora do churrasco coreano! Você precisa se reunir com a galera hoje. Chama todo mundo e faz memórias incríveis juntos! 🥩🎉"
+      },
+      {
+        emoji: "☕📸",
+        name: "Dalgona Coffee",
+        tag: "#ICÔNICO",
+        desc: "Cremoso, icônico e super instagrammável! Sua aura hoje está completamente fotogênica. Faz, fotografa e posta — vai bombar muito! ☕✨"
+      },
+      {
+        emoji: "🍓❄️",
+        name: "Bingsu de Morango",
+        tag: "#REFRESCANTE",
+        desc: "Fresquinho, colorido e levanta o humor na hora! Seu mood hoje é leve e alegre igual a esse bingsu lindo. Compartilha sua alegria com todos! 🍓💕"
+      }
+    ],
+
+    luckyEmojiCombo: [
+      "🌿✨💛", "💫🌟⭐", "🔮✨🌈", "💖🌿🦋",
+      "⭐💛🌻", "🌊✨💎", "🌙💕🌿", "🔥💪⚡",
+      "🌺💐🌸", "✨🎀💗", "🍀💚✨", "🦋🌿💫"
+    ]
+  },
+
+  getShareText: function (result) {
+    return [
+      '✨ Meu Orixá de hoje: ' + result.orixa.name + ' ' + result.orixa.emoji,
+      result.orixa.rarity + '  |  ' + result.orixa.personalityTag,
+      '',
+      '"' + result.orixa.desc + '"',
+      '',
+      '🍜 K-Food do dia: ' + result.kFood.name + ' ' + result.kFood.emoji,
+      result.kFood.tag + ' — ' + result.kFood.desc,
+      '',
+      result.luckyEmojiCombo,
+      '',
+      '🇧🇷 Viral no Brasil — descubra o seu Orixá do dia também!',
+      '👆 Marca seus amigos pra eles descobrirem também! 💛'
+    ].join('\n');
+  },
+
+  theme: {
+    gradientFrom: '#16a34a',
+    gradientTo:   '#065f46',
+    gradientVia:  '#ca8a04',
+    cardBg:       '#f0fdf4',
+    cardBorder:   '#86efac',
+    accentColor:  '#15803d',
+    accentLight:  '#dcfce7',
+    buttonPrimary: 'linear-gradient(135deg, #16a34a, #ca8a04)',
+    buttonShare:   '#15803d',
+    shadowColor:   'rgba(22,163,74,0.4)'
+  }
+};
+
+</script>
+
+  <!-- ── Core 엔진 스크립트 (build.js가 자동 주입) ───────
+       빌드 시 core.js 전체가 여기에 인라인 삽입됩니다.
+       광고 제어, 랜덤 연산, WhatsApp 공유 함수가 정의됩니다.
+  ──────────────────────────────────────────────────────── -->
+  <script>
+/* ====================================================
+ * 핵심 공용 엔진 (자동 생성 - 수정하지 마세요)
+ * 원본: src/core.js
+ * ==================================================== */
+// ============================================================
+// core.js — 글로벌 수익 자판기 핵심 공용 엔진
+// ============================================================
+// 이 파일은 인도/인도네시아 두 스킨이 100% 공유하는 유일한 로직 레이어입니다.
+// 광고 제어, 무한 랜덤 연산, WhatsApp 공유 배선을 담당합니다.
+// ★ 이 파일은 수정하지 않아도 됩니다. 콘텐츠는 config-*.js에서 관리합니다.
+// ============================================================
+
+/**
+ * [랜덤 선택기]
+ * 배열에서 매번 다른 요소를 반환합니다.
+ * 배열 크기를 늘릴수록 조합 수가 폭발적으로 증가 → "무한 랜덤성" 구현의 핵심
+ *
+ * @param {Array} arr - 무작위로 선택할 배열
+ * @returns {*} 배열에서 랜덤하게 선택된 요소 1개
+ */
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+/**
+ * [무한 랜덤 결과 생성기]
+ * config.resultPools 객체의 각 키(luckyNumber, vedicCard 등)에 대해
+ * 각각 독립적으로 랜덤 선택을 수행하여 완성된 결과 객체를 조립합니다.
+ * 예: 9가지 카드 × 13가지 숫자 × 6가지 색상 = 702가지 조합
+ *
+ * @param {Object} config - 국가별 APP_CONFIG 설정 객체 (window.APP_CONFIG)
+ * @returns {Object} 각 풀에서 선택된 값들로 구성된 결과 객체
+ */
+function generateRandomResult(config) {
+  const result = {};
+  // resultPools의 각 키-배열 쌍을 순회하며 독립 랜덤 선택
+  for (const [key, pool] of Object.entries(config.resultPools)) {
+    result[key] = pickRandom(pool);
+  }
+  return result;
+}
+
+/**
+ * [광고 인터스티셜 컨트롤러]
+ * 유저가 결과 보기 버튼을 누를 때 이 함수가 호출됩니다.
+ * Adsterra 광고가 로드되면 → 광고 표시 → 닫힘 시 결과창 이동
+ * Adsterra 광고 차단/로드실패 → 3초 폴백 타이머 후 결과창 강제 이동
+ *
+ * ★ 실제 Adsterra 계정 설정 방법:
+ *    1. Adsterra 대시보드(adsterra.com)에서 'Pop-under' 또는 'Interstitial' 광고 코드 발급
+ *    2. templates/index.html의 <!-- AD_PLACEHOLDER --> 주석을
+ *       발급받은 <script> 코드 전체로 교체하면 자동 작동합니다.
+ *    3. Adsterra 팝언더는 페이지 로드 후 첫 번째 유저 클릭 시 자동 발동되므로
+ *       버튼 클릭이 곧 광고 트리거 시점이 됩니다.
+ *
+ * @param {Function} onComplete - 광고 종료 또는 3초 타임아웃 후 실행할 콜백 함수
+ */
+function showInterstitialAd(onComplete) {
+  // 콜백이 두 번 실행되는 것을 방지하는 플래그
+  let callbackFired = false;
+
+  function fireCallback() {
+    if (callbackFired) return; // 이미 실행됐으면 두 번째 호출 무시
+    callbackFired = true;
+    // 화면에 오버레이가 남아있으면 제거
+    const overlay = document.getElementById('ad-overlay');
+    if (overlay) {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.3s ease';
+      setTimeout(function () { if (overlay.parentNode) overlay.remove(); }, 300);
+    }
+    onComplete(); // 결과창 렌더링 시작
+  }
+
+  // ── 3초 폴백 타이머 ──────────────────────────────────────
+  // AdBlock 사용자, 광고 네트워크 오류, 느린 네트워크 모두 커버
+  // 어떤 상황에서도 유저가 결과 화면으로 반드시 이동하도록 보장
+  const fallbackTimer = setTimeout(fireCallback, 3000);
+
+  // ── 광고 대기 오버레이 DOM 생성 ──────────────────────────
+  // 유저에게 "잠깐 기다려 주세요" 피드백을 주는 반투명 풀스크린 레이어
+  // 실제 Adsterra 팝언더 광고는 백그라운드 탭에서 열리므로
+  // 이 오버레이가 메인 화면의 시각적 피드백을 담당합니다
+  const overlay = document.createElement('div');
+  overlay.id = 'ad-overlay';
+  overlay.setAttribute('style', [
+    'position:fixed', 'top:0', 'left:0', 'right:0', 'bottom:0',
+    'z-index:9999',
+    'background:rgba(0,0,0,0.80)',
+    'display:flex',
+    'flex-direction:column',
+    'align-items:center',
+    'justify-content:center',
+    'backdrop-filter:blur(6px)',
+    '-webkit-backdrop-filter:blur(6px)',
+    'opacity:0',
+    'transition:opacity 0.3s ease'
+  ].join(';'));
+
+  // 오버레이 내부 카드 (국가 스킨에 무관하게 중립적인 디자인)
+  overlay.innerHTML = [
+    '<div style="',
+    'background:white;',
+    'border-radius:24px;',
+    'padding:32px 24px;',
+    'max-width:320px;',
+    'width:88%;',
+    'text-align:center;',
+    'box-shadow:0 30px 60px rgba(0,0,0,0.4);',
+    '">',
+    // 스피너 이모지 (JS가 애니메이션 처리)
+    '<div id="ad-spinner" style="font-size:52px;margin-bottom:16px;">⏳</div>',
+    '<p style="font-size:17px;font-weight:900;color:#222;margin:0 0 6px;">Please wait...</p>',
+    '<p style="font-size:13px;color:#888;margin:0 0 20px;">Your result is almost ready ✨</p>',
+    // 프로그레스 바 트랙
+    '<div style="background:#f0f0f0;border-radius:99px;height:10px;overflow:hidden;margin-bottom:12px;">',
+    '<div id="ad-progress" style="',
+    'height:100%;',
+    'width:0%;',
+    'background:linear-gradient(90deg,#f97316,#eab308);',
+    'border-radius:99px;',
+    'transition:width 0.1s linear;',
+    '"></div>',
+    '</div>',
+    // 광고 레이블
+    '<p style="font-size:10px;color:#ccc;margin:0;">Sponsored · Advertisement</p>',
+    // 실제 Adsterra 배너 광고를 여기에 삽입할 수도 있습니다
+    '<div id="ad-banner-slot" style="margin-top:12px;min-height:60px;"></div>',
+    '</div>'
+  ].join('');
+
+  document.body.appendChild(overlay);
+
+  // 페이드인 (requestAnimationFrame으로 CSS transition 트리거)
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      overlay.style.opacity = '1';
+    });
+  });
+
+  // ── 프로그레스 바 & 스피너 애니메이션 ────────────────────
+  // 3초(3000ms) 동안 0% → 100% 채우기
+  let progress = 0;
+  const progressEl = document.getElementById('ad-progress');
+  const spinnerEl = document.getElementById('ad-spinner');
+  const spinnerFrames = ['⏳', '⌛', '⏳', '⌛'];
+  let spinnerIdx = 0;
+
+  const progressInterval = setInterval(function () {
+    progress += 100 / 30; // 100ms 간격 × 30회 = 3000ms
+    if (progressEl) progressEl.style.width = Math.min(progress, 100) + '%';
+    spinnerIdx = (spinnerIdx + 1) % spinnerFrames.length;
+    if (spinnerEl) spinnerEl.textContent = spinnerFrames[spinnerIdx];
+    if (progress >= 100) clearInterval(progressInterval);
+  }, 100);
+
+  // ── Adsterra 실제 광고 API 연동 (선택 사항) ───────────────
+  // Adsterra 스크립트가 페이지에 로드된 경우 공식 닫힘 이벤트를 수신합니다.
+  // 스크립트가 없거나 함수가 없으면 try/catch가 무시하고 fallbackTimer에 위임합니다.
+  try {
+    if (typeof window.__adsterra_show === 'function') {
+      window.__adsterra_show({
+        onClose: function () {
+          clearTimeout(fallbackTimer);
+          clearInterval(progressInterval);
+          fireCallback();
+        }
+      });
+    }
+    // ★ Adsterra 팝언더 방식(가장 일반적):
+    //   유저의 첫 클릭 이벤트에서 자동으로 백그라운드 탭이 열립니다.
+    //   AD_PLACEHOLDER에 Adsterra 스크립트를 삽입하면 별도 API 호출 없이 자동 작동합니다.
+  } catch (e) {
+    // 광고 트리거 오류 → fallbackTimer(3초)에 위임하여 유저 이탈 방지
+    console.warn('[AdManager] 광고 트리거 실패, 3초 폴백 타이머 사용 중.', e.message);
+  }
+}
+
+/**
+ * [WhatsApp 공유 URL 생성기]
+ * 현재 도메인 URL + 국가별 현지어 바이럴 문구를 합쳐
+ * WhatsApp 딥링크 URL을 만듭니다.
+ *
+ * @param {Object} config - 국가별 APP_CONFIG (config.getShareText 함수 필요)
+ * @param {Object} result - generateRandomResult()가 반환한 결과 객체
+ * @returns {string} 완성된 WhatsApp 공유 URL
+ */
+function generateWhatsAppShareUrl(config, result) {
+  // config.getShareText(result)가 현지어 바이럴 문구를 반환
+  const shareText = config.getShareText(result);
+  // 현재 페이지 URL을 문구 끝에 자동 주입
+  const fullText = shareText + '\n\n👉 ' + window.location.href;
+  return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(fullText);
+}
+
+/**
+ * [WhatsApp 공유 실행기]
+ * 새 탭으로 WhatsApp 공유 URL을 엽니다.
+ * 모바일에서는 WhatsApp 앱이 직접 실행됩니다.
+ * PC에서는 web.whatsapp.com이 열립니다.
+ *
+ * @param {Object} config - 국가별 APP_CONFIG
+ * @param {Object} result - 현재 화면의 랜덤 결과 객체
+ */
+function openWhatsAppShare(config, result) {
+  const url = generateWhatsAppShareUrl(config, result);
+  // noopener: 새 탭에서 window.opener 접근 차단 (보안)
+  // noreferrer: 리퍼러 헤더 전송 차단 (개인정보 보호)
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+</script>
+
+  <!-- ── 앱 전용 커스텀 스타일 ─────────────────────────── -->
+  <style>
+    /* 기본 리셋 & 모바일 최적화 */
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif; }
+
+    /* 버튼 터치 피드백 */
+    .btn-primary:active  { transform: scale(0.96); }
+    .btn-share:active    { transform: scale(0.96); }
+    .btn-retry:active    { transform: scale(0.97); }
+
+    /* 카드 페이드인 애니메이션 */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.45s ease forwards; }
+
+    /* 히어로 이모지 펄스 애니메이션 */
+    @keyframes heroPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+    .animate-hero { animation: heroPulse 2s ease-in-out infinite; }
+
+    /* 결과 카드 빛나는 테두리 효과 */
+    @keyframes shimmer {
+      0%   { box-shadow: 0 0 0 0 var(--shadow-color, rgba(251,191,36,0.4)); }
+      70%  { box-shadow: 0 0 0 12px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .card-shimmer { animation: shimmer 2s 0.5s ease forwards; }
+
+    /* 희귀도 배지 반짝임 */
+    @keyframes rarityGlow {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.7; }
+    }
+    .rarity-badge { animation: rarityGlow 1.5s ease infinite; }
+
+    /* 드롭다운 커스텀 화살표 */
+    select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+    /* 스크롤바 숨기기 (결과 카드) */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+
+<body>
+  <!-- 앱 루트 컨테이너: 모든 화면이 여기에 렌더링됩니다 -->
+  <div id="app"></div>
+
+  <!-- ============================================================
+       앱 메인 스크립트
+       window.APP_CONFIG (config-*.js에서 정의)와
+       core.js 함수들을 사용하여 모든 화면을 렌더링합니다.
+       ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── APP_CONFIG 가드 ─────────────────────────────────
+      // build.js가 제대로 config를 주입하지 못한 경우 안내 메시지 표시
+      if (typeof window.APP_CONFIG === 'undefined') {
+        document.getElementById('app').innerHTML =
+          '<div style="padding:40px;text-align:center;font-family:sans-serif;">' +
+          '<h2>⚠️ Build Error</h2>' +
+          '<p>이 파일은 templates/index.html 원본입니다.<br>' +
+          '<strong>node build.js</strong> 를 실행하여 dist/ 결과물을 열어주세요.</p>' +
+          '</div>';
+        return;
+      }
+
+      var cfg = window.APP_CONFIG; // 국가별 설정 객체
+      var currentResult = null;   // 현재 화면에 표시 중인 랜덤 결과 저장
+
+      // ── DOM 헬퍼 ────────────────────────────────────────
+      function setApp(html) {
+        document.getElementById('app').innerHTML = html;
+      }
+
+      // ── CSS 변수 주입 (테마 색상을 CSS 레이어에 전달) ──
+      function applyTheme() {
+        var root = document.documentElement;
+        root.style.setProperty('--grad-from',    cfg.theme.gradientFrom);
+        root.style.setProperty('--grad-to',      cfg.theme.gradientTo);
+        root.style.setProperty('--grad-via',     cfg.theme.gradientVia);
+        root.style.setProperty('--card-bg',      cfg.theme.cardBg);
+        root.style.setProperty('--card-border',  cfg.theme.cardBorder);
+        root.style.setProperty('--accent',       cfg.theme.accentColor);
+        root.style.setProperty('--accent-light', cfg.theme.accentLight);
+        root.style.setProperty('--btn-primary',  cfg.theme.buttonPrimary);
+        root.style.setProperty('--shadow-color', cfg.theme.shadowColor);
+      }
+
+      // ─────────────────────────────────────────────────────
+      // SCREEN 1: 랜딩 페이지
+      // 유저가 처음 진입했을 때 보이는 화면
+      // ─────────────────────────────────────────────────────
+      function showLanding() {
+        // 인도 스킨만 카테고리 드롭다운을 표시합니다
+        var selectorHtml = '';
+        if (cfg.ui.selectorLabel && cfg.ui.selectorOptions && cfg.ui.selectorOptions.length > 0) {
+          var optionsHtml = cfg.ui.selectorOptions.map(function (opt) {
+            return '<option value="' + opt.value + '">' + opt.label + '</option>';
+          }).join('');
+          selectorHtml = [
+            '<div class="mb-5">',
+            '<label class="block text-xs font-bold mb-2" style="color:var(--accent)">',
+            cfg.ui.selectorLabel,
+            '</label>',
+            '<select id="category-select" class="w-full p-3 rounded-2xl border text-sm text-gray-700 bg-white focus:outline-none focus:ring-2" style="border-color:var(--card-border);box-shadow:0 2px 8px rgba(0,0,0,0.08);">',
+            optionsHtml,
+            '</select>',
+            '</div>'
+          ].join('');
+        }
+
+        setApp([
+          // 배경 그래디언트
+          '<div class="min-h-screen flex flex-col items-center justify-center p-5" style="background:linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to));">',
+
+          // 히어로 이모지
+          '<div class="text-6xl mb-3 text-center animate-hero select-none" aria-hidden="true">',
+          cfg.ui.heroEmoji,
+          '</div>',
+
+          // 앱 타이틀
+          '<h1 class="text-3xl font-black text-center text-white mb-2 drop-shadow-lg" style="text-shadow:0 2px 8px rgba(0,0,0,0.2)">',
+          cfg.ui.appTitle,
+          '</h1>',
+
+          // 서브타이틀
+          '<p class="text-center text-white text-sm mb-4 px-4 max-w-xs" style="opacity:0.92">',
+          cfg.ui.appSubtitle,
+          '</p>',
+
+          // K-뱃지 (인도네시아 스킨만 — 한국 트렌드 신뢰 마케팅)
+          cfg.ui.koreaBadge ? [
+            '<div class="text-center mb-5">',
+            '<span class="inline-block px-4 py-1.5 rounded-full text-xs font-black" style="background:rgba(255,255,255,0.28);color:white;letter-spacing:0.02em">',
+            cfg.ui.koreaBadge,
+            '</span>',
+            '</div>'
+          ].join('') : '<div class="mb-4"></div>',
+
+          // 메인 카드
+          '<div class="w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fade-in-up" style="background:var(--card-bg);border:1.5px solid var(--card-border);box-shadow:0 20px 50px var(--shadow-color)">',
+          selectorHtml,
+
+          // CTA 버튼 (버튼 클릭 = 광고 + 결과 트리거)
+          '<button id="cta-btn" onclick="window._handleCTAClick()" class="w-full py-4 px-6 rounded-2xl font-black text-lg text-white shadow-lg btn-primary transition-all duration-200 active:scale-95" style="background:var(--btn-primary);box-shadow:0 8px 20px var(--shadow-color)">',
+          cfg.ui.ctaButton,
+          '</button>',
+
+          // 서브텍스트
+          '<p class="text-center text-xs mt-3" style="color:var(--accent);opacity:0.7">',
+          cfg.ui.ctaSubtext,
+          '</p>',
+          '</div>',
+
+          // 푸터
+          '<p class="text-white text-xs mt-8" style="opacity:0.4">© 2024 Global Lucky Vending Machine</p>',
+          '</div>'
+        ].join(''));
+      }
+
+      // ─────────────────────────────────────────────────────
+      // SCREEN 2: 광고 대기 화면
+      // showInterstitialAd()가 완료(닫힘 or 3초)되면 결과 화면으로 자동 이동
+      // ─────────────────────────────────────────────────────
+      function showAdWaiting() {
+        setApp([
+          '<div class="min-h-screen flex flex-col items-center justify-center p-5" style="background:linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to));">',
+          '<div class="w-full max-w-sm rounded-3xl p-8 text-center animate-fade-in-up" style="background:var(--card-bg);border:1.5px solid var(--card-border)">',
+          '<div class="text-5xl mb-4 animate-spin select-none" id="loading-spinner">⏳</div>',
+          '<p class="font-black text-lg mb-2" style="color:var(--accent)">', cfg.ui.adNotice, '</p>',
+          '<p class="text-xs text-gray-400">Please wait a moment... ✨</p>',
+          '</div>',
+          '</div>'
+        ].join(''));
+      }
+
+      // ─────────────────────────────────────────────────────
+      // SCREEN 3: 결과 화면
+      // 인도/인도네시아 스킨에 따라 다른 결과 카드를 렌더링
+      // ─────────────────────────────────────────────────────
+      function showResult(result) {
+        var resultCardHtml = '';
+
+        // ── 인도 스킨 결과 카드 ──────────────────────────
+        if (cfg.country === 'india') {
+          resultCardHtml = [
+            // 메인 카드 이모지 + 카드명
+            '<div class="text-center mb-5">',
+            '<div class="text-6xl mb-2 select-none">', result.vedicCard.emoji, '</div>',
+            '<h2 class="text-xl font-black" style="color:var(--accent)">', result.vedicCard.name, '</h2>',
+            '<p class="text-xs text-gray-400 mt-0.5">', result.vedicCard.nameHi, '</p>',
+            '</div>',
+
+            // 영어 메시지
+            '<div class="rounded-2xl p-4 mb-4 text-sm leading-relaxed" style="background:white;border:1px solid var(--card-border)">',
+            '<p class="text-gray-700 mb-2">', result.vedicCard.message, '</p>',
+            '<p class="text-xs text-gray-400 italic">', result.vedicCard.messageHi, '</p>',
+            '</div>',
+
+            // 만트라
+            '<p class="text-center font-bold text-sm mb-4" style="color:var(--accent)">', result.vedicCard.mantra, '</p>',
+
+            // 행운 정보 그리드
+            '<div class="grid grid-cols-2 gap-3 mb-4">',
+            // 행운의 숫자
+            '<div class="rounded-2xl p-3 text-center" style="background:var(--accent-light)">',
+            '<div class="text-2xl select-none">🔢</div>',
+            '<div class="text-xs text-gray-500 mt-1">Lucky Number</div>',
+            '<div class="font-black text-xl mt-0.5" style="color:var(--accent)">', result.luckyNumber, '</div>',
+            '</div>',
+            // 행운의 시간
+            '<div class="rounded-2xl p-3 text-center" style="background:var(--accent-light)">',
+            '<div class="text-2xl select-none">⏰</div>',
+            '<div class="text-xs text-gray-500 mt-1">Lucky Time</div>',
+            '<div class="font-bold text-xs mt-0.5" style="color:var(--accent)">', result.luckyTime, '</div>',
+            '</div>',
+            '</div>',
+
+            // 행운의 색상
+            '<div class="rounded-2xl p-3 text-center mb-4" style="background:white;border:1px solid var(--card-border)">',
+            '<div class="text-xs text-gray-400 mb-1">Lucky Color | शुभ रंग</div>',
+            '<div class="font-bold" style="color:var(--accent)">', result.luckyColor.en, ' | ', result.luckyColor.hi, '</div>',
+            '</div>',
+
+            // 크리켓 행운 팁
+            '<div class="rounded-2xl p-3 text-center mb-4" style="background:var(--accent-light)">',
+            '<p class="text-sm font-bold" style="color:var(--accent)">', result.vedicCard.cricketTip, '</p>',
+            '</div>'
+          ].join('');
+        }
+
+        // ── 멕시코 스킨 결과 카드 (아스텍 달력) ─────────
+        else if (cfg.country === 'mexico') {
+          resultCardHtml = [
+            // 아스텍 카드 이모지 + 이름
+            '<div class="text-center mb-5">',
+            '<div class="text-6xl mb-2 select-none">', result.aztecCard.emoji, '</div>',
+            '<h2 class="text-xl font-black" style="color:var(--accent)">', result.aztecCard.name, '</h2>',
+            '<p class="text-xs text-gray-400 mt-0.5">', result.aztecCard.glyph, '</p>',
+            '</div>',
+
+            // 스페인어 메시지
+            '<div class="rounded-2xl p-4 mb-4 text-sm leading-relaxed" style="background:white;border:1px solid var(--card-border)">',
+            '<p class="text-gray-700">', result.aztecCard.message, '</p>',
+            '</div>',
+
+            // 만트라
+            '<p class="text-center font-bold text-sm mb-4" style="color:var(--accent)">', result.aztecCard.mantra, '</p>',
+
+            // 행운 정보 그리드
+            '<div class="grid grid-cols-2 gap-3 mb-4">',
+            '<div class="rounded-2xl p-3 text-center" style="background:var(--accent-light)">',
+            '<div class="text-2xl select-none">🔢</div>',
+            '<div class="text-xs text-gray-500 mt-1">Número de la Suerte</div>',
+            '<div class="font-black text-xl mt-0.5" style="color:var(--accent)">', result.luckyNumber, '</div>',
+            '</div>',
+            '<div class="rounded-2xl p-3 text-center" style="background:var(--accent-light)">',
+            '<div class="text-2xl select-none">⏰</div>',
+            '<div class="text-xs text-gray-500 mt-1">Hora de Poder</div>',
+            '<div class="font-bold text-xs mt-0.5" style="color:var(--accent)">', result.luckyTime, '</div>',
+            '</div>',
+            '</div>',
+
+            // 행운의 색상
+            '<div class="rounded-2xl p-3 text-center mb-4" style="background:white;border:1px solid var(--card-border)">',
+            '<div class="text-xs text-gray-400 mb-1">Color Sagrado del Día</div>',
+            '<div class="font-bold" style="color:var(--accent)">', result.luckyColor.es, ' · ', result.luckyColor.alt, '</div>',
+            '</div>',
+
+            // 음식 행운 팁
+            '<div class="rounded-2xl p-3 text-center mb-4" style="background:var(--accent-light)">',
+            '<p class="text-sm font-bold" style="color:var(--accent)">', result.aztecCard.foodTip, '</p>',
+            '</div>'
+          ].join('');
+        }
+
+        // ── 브라질 스킨 결과 카드 (오리샤 수호령) ────────
+        else if (cfg.country === 'brazil') {
+          resultCardHtml = [
+            // 오리샤 이모지 + 희귀도 배지
+            '<div class="text-center mb-4">',
+            '<div class="text-6xl mb-3 select-none">', result.orixa.emoji, '</div>',
+            '<span class="rarity-badge inline-block rounded-full px-3 py-1 text-xs font-black mb-3" style="background:var(--accent-light);color:var(--accent)">',
+            result.orixa.rarity,
+            '</span>',
+            '</div>',
+
+            // 오리샤 이름 + 성격 태그
+            '<h2 class="text-xl font-black text-center mb-1" style="color:var(--accent)">Orixá: ', result.orixa.name, '</h2>',
+            '<div class="text-center mb-4">',
+            '<span class="inline-block rounded-full px-4 py-1 text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">',
+            result.orixa.personalityTag,
+            '</span>',
+            '</div>',
+
+            // 오리샤 설명
+            '<div class="rounded-2xl p-4 mb-4 text-sm leading-relaxed text-gray-700" style="background:white;border:1px solid var(--card-border)">',
+            result.orixa.desc,
+            '</div>',
+
+            // K-Food 섹션
+            '<div class="rounded-2xl p-4 mb-4" style="background:white;border:1px solid var(--card-border)">',
+            '<div class="text-xs font-black mb-3" style="color:var(--accent)">🍜 K-Food do Dia</div>',
+            '<div class="flex items-start gap-3">',
+            '<span class="text-3xl flex-shrink-0 select-none">', result.kFood.emoji, '</span>',
+            '<div>',
+            '<div class="font-black text-sm mb-1" style="color:var(--accent)">', result.kFood.name, '</div>',
+            '<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold mb-1" style="background:var(--accent-light);color:var(--accent)">', result.kFood.tag, '</span>',
+            '<p class="text-xs text-gray-600 leading-relaxed">', result.kFood.desc, '</p>',
+            '</div>',
+            '</div>',
+            '</div>',
+
+            // 행운 이모지 콤보
+            '<div class="text-center text-4xl mb-2 select-none">', result.luckyEmojiCombo, '</div>'
+          ].join('');
+        }
+
+        // ── 인도네시아 스킨 결과 카드 (기본값) ──────────
+        else {
+          resultCardHtml = [
+            // 수호령 이모지 + 희귀도 배지
+            '<div class="text-center mb-4">',
+            '<div class="text-6xl mb-3 select-none">', result.khodam.emoji, '</div>',
+            '<span class="rarity-badge inline-block rounded-full px-3 py-1 text-xs font-black mb-3" style="background:var(--accent-light);color:var(--accent)">',
+            result.khodam.rarity,
+            '</span>',
+            '</div>',
+
+            // 수호령 이름 + 성격 태그
+            '<h2 class="text-xl font-black text-center mb-1" style="color:var(--accent)">Khodam: ', result.khodam.name, '</h2>',
+            '<div class="text-center mb-4">',
+            '<span class="inline-block rounded-full px-4 py-1 text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">',
+            result.khodam.personalityTag,
+            '</span>',
+            '</div>',
+
+            // 수호령 설명
+            '<div class="rounded-2xl p-4 mb-4 text-sm leading-relaxed text-gray-700" style="background:white;border:1px solid var(--card-border)">',
+            result.khodam.desc,
+            '</div>',
+
+            // K-푸드 섹션
+            '<div class="rounded-2xl p-4 mb-4" style="background:white;border:1px solid var(--card-border)">',
+            '<div class="text-xs font-black mb-3" style="color:var(--accent)">🍜 K-Food Hari Ini</div>',
+            '<div class="flex items-start gap-3">',
+            '<span class="text-3xl flex-shrink-0 select-none">', result.kFood.emoji, '</span>',
+            '<div>',
+            '<div class="font-black text-sm mb-1" style="color:var(--accent)">', result.kFood.name, '</div>',
+            '<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold mb-1" style="background:var(--accent-light);color:var(--accent)">', result.kFood.tag, '</span>',
+            '<p class="text-xs text-gray-600 leading-relaxed">', result.kFood.desc, '</p>',
+            '</div>',
+            '</div>',
+            '</div>',
+
+            // 행운의 이모지 콤보
+            '<div class="text-center text-4xl mb-2 select-none">', result.luckyEmojiCombo, '</div>'
+          ].join('');
+        }
+
+        // 결과 화면 전체 렌더링
+        setApp([
+          '<div class="min-h-screen flex flex-col items-center justify-start pt-8 px-5 pb-24" style="background:linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to));">',
+
+          // 결과 카드 (카드 등장 애니메이션 + 반짝임 효과)
+          '<div class="w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fade-in-up card-shimmer no-scrollbar" style="background:var(--card-bg);border:1.5px solid var(--card-border);box-shadow:0 20px 50px var(--shadow-color)">',
+
+          // 결과 타이틀
+          '<h3 class="text-center font-black text-lg mb-5" style="color:var(--accent)">',
+          cfg.ui.resultTitle,
+          '</h3>',
+
+          // 국가별 결과 카드 내용 (위에서 조립한 HTML)
+          resultCardHtml,
+
+          // WhatsApp 공유 버튼 (바이럴 핵심!)
+          '<button onclick="window._handleShare()" class="w-full py-4 px-6 rounded-2xl font-black text-base text-white shadow-lg btn-share transition-all duration-200 mt-2" style="background:var(--btn-share, #16a34a);box-shadow:0 8px 20px rgba(22,163,74,0.35)">',
+          cfg.ui.shareButton,
+          '</button>',
+          '<p class="text-center text-xs mt-2" style="color:var(--accent);opacity:0.65">',
+          cfg.ui.shareSubtext,
+          '</p>',
+
+          // 다시 뽑기 버튼
+          '<button onclick="window._handleRetry()" class="w-full py-3 px-6 rounded-2xl font-bold text-sm mt-3 btn-retry transition-all duration-200" style="background:white;border:1.5px solid var(--card-border);color:var(--accent)">',
+          cfg.ui.retryButton,
+          '</button>',
+
+          '</div>', // 결과 카드 닫기
+
+          // 스마트링크 버튼 (카드 외부 — 콘텐츠 소비 직후 클릭률 최적 위치)
+          '<a href="https://www.effectivecpmnetwork.com/j89322zg?key=561457da58909f9dc25b5cba39d53876" target="_blank" rel="noopener" class="block w-full max-w-sm mt-4 py-3 px-5 rounded-2xl font-bold text-sm text-center text-white active:scale-95 transition-all duration-200" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 6px 16px rgba(99,102,241,0.3)">',
+          cfg.ui.smartlinkButton || '✨ Explore More Lucky Insights →',
+          '</a>',
+
+          // 네이티브 배너 컨테이너 (invoke.js가 여기에 광고를 주입)
+          '<div class="w-full max-w-sm mt-4">',
+          '<div id="container-885d437a9988328211937c3edeff1988"></div>',
+          '</div>',
+
+          '</div>' // 화면 닫기
+        ].join(''));
+
+        // 네이티브 배너 스크립트 레이지 로드 — 컨테이너 div 생성 후 1회만 실행
+        if (!window._nativeBannerLoaded) {
+          window._nativeBannerLoaded = true;
+          var nbs = document.createElement('script');
+          nbs.async = true;
+          nbs.setAttribute('data-cfasync', 'false');
+          nbs.src = 'https://pl30266861.effectivecpmnetwork.com/885d437a9988328211937c3edeff1988/invoke.js';
+          document.head.appendChild(nbs);
+        }
+
+        // CSS 변수로 공유 버튼 색상 지정
+        document.documentElement.style.setProperty('--btn-share', cfg.theme.buttonShare);
+      }
+
+      // ─────────────────────────────────────────────────────
+      // 이벤트 핸들러 (onclick에서 window._로 글로벌 접근)
+      // ─────────────────────────────────────────────────────
+
+      /**
+       * CTA 버튼 클릭 핸들러
+       * 광고 오버레이 → 3초 후 자동으로 결과 화면으로 이동
+       */
+      window._handleCTAClick = function () {
+        showAdWaiting(); // 대기 화면 표시 (즉시 반응 = UX 퀄리티)
+        showInterstitialAd(function () {
+          // 광고 완료 or 3초 폴백 후 실행
+          var result = generateRandomResult(cfg);
+          currentResult = result;
+          showResult(result);
+        });
+      };
+
+      /**
+       * WhatsApp 공유 버튼 클릭 핸들러
+       * 현재 결과를 현지어 바이럴 문구와 함께 WhatsApp으로 공유
+       */
+      window._handleShare = function () {
+        if (currentResult) {
+          openWhatsAppShare(cfg, currentResult);
+        }
+      };
+
+      /**
+       * 다시 뽑기 버튼 클릭 핸들러
+       * 랜딩 화면으로 돌아가 새로운 결과를 뽑을 수 있게 합니다
+       */
+      window._handleRetry = function () {
+        currentResult = null;
+        showLanding();
+      };
+
+      // ── 앱 초기화 ────────────────────────────────────────
+      applyTheme();   // CSS 변수에 테마 색상 주입
+      showLanding();  // 랜딩 화면 렌더링 시작
+
+    })();
+  </script>
+</body>
+</html>
