@@ -124,8 +124,69 @@ window.APP_CONFIG = {
     smartlinkButton: "✨ Descobrir Mais Sorte e Axé →",
     koreaBadge: "🇰🇷 Tendência na Coreia · Viral no Brasil 🇧🇷",
     selectorLabel: null,
-    selectorOptions: []
+    selectorOptions: [],
+
+    // 기능 3: 별자리(서양 조디악 + Orixá 연결) 선택 UI
+    zodiacLabel: "Escolha seu Signo & Orixá 🌙",
+    zodiacPlaceholder: "Seu signo deixa a leitura mais certeira~",
+    zodiacOptions: [
+      { value: 0,  label: "♈ Áries — Filho de Ogum" },
+      { value: 1,  label: "♉ Touro — Filho de Oxum" },
+      { value: 2,  label: "♊ Gêmeos — Filho de Exú" },
+      { value: 3,  label: "♋ Câncer — Filho de Iemanjá" },
+      { value: 4,  label: "♌ Leão — Filho de Xangô" },
+      { value: 5,  label: "♍ Virgem — Filho de Oxalá" },
+      { value: 6,  label: "♎ Libra — Filho de Oxossi" },
+      { value: 7,  label: "♏ Escorpião — Filho de Iansã" },
+      { value: 8,  label: "♐ Sagitário — Filho de Oxóssi" },
+      { value: 9,  label: "♑ Capricórnio — Filho de Nanã" },
+      { value: 10, label: "♒ Aquário — Filho de Oxumaré" },
+      { value: 11, label: "♓ Peixes — Filho de Iemanjá" }
+    ],
+
+    // 기능 4: 주간 트렌드 배너 UI
+    weeklyTrendLabel: "🔥 Tendência K-Culture no Brasil",
+
+    // 기능 5: 방문자 카운터 UI
+    visitorText: "brasileiros já consultaram seu Orixá hoje!",
+    visitorBase: 8500,
+    visitorVariance: 6000,
+
+    // 기능 1: 오늘의 럭키 아이템 패널 제목
+    dailyItemTitle: "🌿 Itens de Axé de Hoje"
   },
+
+  // 기능 1: 오늘의 럭키 아이템 — Umbanda/Orixá 문화 기반
+  dailyLuckyItems: [
+    { emoji: "🌻", name: "Girassol de Oxum", desc: "Coloque um girassol amarelo em casa hoje — Oxum traz amor, beleza e dinheiro junto! 💛✨" },
+    { emoji: "💙", name: "Oferenda ao Mar", desc: "Beba um copo d'água com intenção boa hoje — Iemanjá purifica sua energia do zero 🌊" },
+    { emoji: "🔴", name: "Fita Vermelha de Ogum", desc: "Amarre algo vermelho no pulso hoje — Ogum abre todos os caminhos do dia! 🔴⚔️" },
+    { emoji: "🌿", name: "Ervas de Oxóssi", desc: "Coloque plantas ou flores verdes no seu espaço — o caçador traz foco e sorte! 🌿🏹" },
+    { emoji: "⚡", name: "Pedra de Xangô", desc: "Segure algo de pedra ou metal hoje — a justiça de Xangô está trabalhando por você ⚡" },
+    { emoji: "💜", name: "Perfume de Iansã", desc: "Use seu perfume favorito hoje com intenção — Iansã potencializa tudo que você deseja! 🌪️💜" },
+    { emoji: "🤍", name: "Oração a Oxalá", desc: "5 minutos de silêncio ou meditação de manhã — Oxalá enche sua mente de sabedoria 🤍🙏" },
+    { emoji: "🪷", name: "Rosa de Nanã", desc: "Rosa roxa ou qualquer flor de cor escura perto de você — Nanã ativa intuição profunda 🪷" },
+    { emoji: "🟢", name: "Moeda de Exú", desc: "Coloque uma moeda no bolso direito hoje — Exú multiplica oportunidades no caminho! 💚🔮" },
+    { emoji: "🌊", name: "Banho de Mar ou Rio", desc: "Toque água corrente por 30 segundos — limpa o campo energético instantaneamente! 🌊✨" },
+    { emoji: "🕯️", name: "Vela Branca de Abertura", desc: "Acenda uma vela branca antes de trabalhar — ilumina o caminho e atrai boas energias 🕯️" },
+    { emoji: "🌹", name: "Rosa de Pomba Gira", desc: "Use algo vermelho e dourado hoje — Pomba Gira amplifica seu magnetismo pessoal! 💃🌹" }
+  ],
+
+  // 기능 4: 주간 K-트렌드 — 브라질 특화
+  weeklyKTrends: [
+    { emoji: "🍜", trend: "Buldak Ramen Challenge BR", desc: "Brasil vs Coreia: quem aguenta mais a pimenta? Desafio viral da semana! 🔥🇧🇷" },
+    { emoji: "💄", trend: "K-Beauty no Brasil", desc: "Rotina de skincare coreana Glass Skin está dominando o TikTok brasileiro! ✨" },
+    { emoji: "🎵", trend: "BLACKPINK + Baile Funk", desc: "O remix de K-Pop com funk carioca virou hit no Spotify Brasil esta semana 🎵🎉" },
+    { emoji: "🧋", trend: "Bubble Tea de Açaí", desc: "A fusão mais brasileira do bubble tea coreano — o sabor açaí domina São Paulo! 🟣" },
+    { emoji: "🎭", trend: "K-Drama: Alchemy of Souls", desc: "O K-Drama mais comentado no Twitter Brasil esta semana — você tá assistindo? ✨" },
+    { emoji: "👗", trend: "Hanbok + Moda Carnaval", desc: "Estilistas brasileiros misturaram hanbok com fantasias de carnaval — incrível! 🎨" },
+    { emoji: "🍱", trend: "Kimbap com Sabores BR", desc: "Kimbap de queijo catupiry e frango — a adaptação brasileira que conquistou todos! 🍱" },
+    { emoji: "🎤", trend: "BTS em Português", desc: "Covers das músicas do BTS cantadas em português brasileiro estão viralizando! 🎤💫" },
+    { emoji: "🌶️", trend: "Tteokbokki com Malagueta", desc: "Versão brasileira do tteokbokki com pimenta malagueta — encontre no iFood agora! 🌶️🍡" },
+    { emoji: "📱", trend: "Webtoon em Português", desc: "Webtoons coreanos traduzidos para o português — leitores do Brasil lideram o mundo! 📖" },
+    { emoji: "🌸", trend: "Sunscreen Coreano no BR", desc: "Bloqueadores solares coreanos dominam as resenhas no YouTube Brasil esta semana ☀️" },
+    { emoji: "🏋️", trend: "Rotina de Treino K-Idol", desc: "A academia no estilo K-Pop idol está bombando nas academias de SP e RJ! 💪" }
+  ],
 
   resultPools: {
 
@@ -489,6 +550,59 @@ function showInterstitialAd(onComplete) {
 }
 
 /**
+ * [날짜 시드 선택기] — 기능 1: 오늘의 럭키 아이템
+ * 오늘 날짜를 seed로 사용해서 배열에서 하나를 일관되게 반환합니다.
+ * 같은 날은 누구나 같은 항목 → 매일 자정마다 자동 갱신 → 재방문 유도
+ */
+function getDailyItem(arr) {
+  var d = new Date();
+  var seed = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  return arr[seed % arr.length];
+}
+
+/**
+ * [주간 트렌드 선택기] — 기능 4: 주간 K-트렌드 배너
+ * 이번 주차(ISO week number)를 seed로 매주 자동 교체되는 트렌드를 반환합니다.
+ */
+function getWeeklyTrend(arr) {
+  var d = new Date();
+  var startOfYear = new Date(d.getFullYear(), 0, 1);
+  var week = Math.floor((d - startOfYear) / (7 * 24 * 60 * 60 * 1000));
+  return arr[week % arr.length];
+}
+
+/**
+ * [일일 방문자 카운터] — 기능 5: 사회적 증거 UI
+ * 날짜와 시간(0-23h)을 seed로 결정론적 숫자를 생성합니다.
+ * 시간이 지날수록 숫자가 자연스럽게 증가하는 것처럼 보입니다.
+ * @param {number} base - 기본 방문자 수 (예: 8000)
+ * @param {number} variance - 변동 폭 (예: 5000 → 8000~12999 범위)
+ */
+function getDailyVisitorCount(base, variance) {
+  var d = new Date();
+  var seed = d.getFullYear() * 1000000 + (d.getMonth() + 1) * 10000 + d.getDate() * 100 + d.getHours();
+  var hash = ((seed * 2654435761) >>> 0);
+  var count = base + (hash % variance);
+  return count.toLocaleString();
+}
+
+/**
+ * [별자리 가중 결과 생성기] — 기능 3: 별자리 선택 맞춤형 결과
+ * zodiacIndex(0-11)를 오프셋으로 더해 별자리마다 다른 결과 분포를 만듭니다.
+ * 실제로는 랜덤이지만 유저에게 "나만의 맞춤 결과" 느낌을 줍니다.
+ */
+function generateZodiacResult(config, zodiacIndex) {
+  var result = {};
+  for (var key in config.resultPools) {
+    var pool = config.resultPools[key];
+    var baseIdx = Math.floor(Math.random() * pool.length);
+    var idx = (baseIdx + (zodiacIndex || 0)) % pool.length;
+    result[key] = pool[idx];
+  }
+  return result;
+}
+
+/**
  * [WhatsApp 공유 URL 생성기]
  * 현재 도메인 URL + 국가별 현지어 바이럴 문구를 합쳐
  * WhatsApp 딥링크 URL을 만듭니다.
@@ -624,14 +738,47 @@ function openWhatsAppShare(config, result) {
       // 유저가 처음 진입했을 때 보이는 화면
       // ─────────────────────────────────────────────────────
       function showLanding() {
-        // 인도 스킨만 카테고리 드롭다운을 표시합니다
+        // ── 기능 4: 주간 K-트렌드 배너 ─────────────────────
+        var weeklyTrendHtml = '';
+        if (cfg.weeklyKTrends && cfg.weeklyKTrends.length > 0 && cfg.ui.weeklyTrendLabel) {
+          var trend = getWeeklyTrend(cfg.weeklyKTrends);
+          weeklyTrendHtml = [
+            '<div class="w-full max-w-sm mb-3 rounded-2xl px-4 py-3 flex items-center gap-3 animate-fade-in-up" style="background:rgba(255,255,255,0.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">',
+            '<span class="text-2xl select-none flex-shrink-0">', trend.emoji, '</span>',
+            '<div class="min-w-0">',
+            '<div class="text-white text-xs font-black mb-0.5" style="opacity:0.85">', cfg.ui.weeklyTrendLabel, '</div>',
+            '<div class="text-white font-bold text-sm truncate">', trend.trend, '</div>',
+            '<div class="text-white text-xs" style="opacity:0.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">', trend.desc, '</div>',
+            '</div>',
+            '</div>'
+          ].join('');
+        }
+
+        // ── 기능 3: 별자리 드롭다운 ─────────────────────────
+        var zodiacHtml = '';
+        if (cfg.ui.zodiacOptions && cfg.ui.zodiacOptions.length > 0) {
+          var zodiacOpts = cfg.ui.zodiacOptions.map(function (opt) {
+            return '<option value="' + opt.value + '">' + opt.label + '</option>';
+          }).join('');
+          zodiacHtml = [
+            '<div class="mb-4">',
+            '<label class="block text-xs font-bold mb-2" style="color:var(--accent)">', cfg.ui.zodiacLabel, '</label>',
+            '<select id="zodiac-select" class="w-full p-3 rounded-2xl border text-sm text-gray-700 bg-white focus:outline-none focus:ring-2" style="border-color:var(--card-border);box-shadow:0 2px 8px rgba(0,0,0,0.08);">',
+            '<option value="-1">', cfg.ui.zodiacPlaceholder, '</option>',
+            zodiacOpts,
+            '</select>',
+            '</div>'
+          ].join('');
+        }
+
+        // ── 카테고리 드롭다운 (인도 스킨) ──────────────────
         var selectorHtml = '';
         if (cfg.ui.selectorLabel && cfg.ui.selectorOptions && cfg.ui.selectorOptions.length > 0) {
           var optionsHtml = cfg.ui.selectorOptions.map(function (opt) {
             return '<option value="' + opt.value + '">' + opt.label + '</option>';
           }).join('');
           selectorHtml = [
-            '<div class="mb-5">',
+            '<div class="mb-4">',
             '<label class="block text-xs font-bold mb-2" style="color:var(--accent)">',
             cfg.ui.selectorLabel,
             '</label>',
@@ -642,9 +789,26 @@ function openWhatsAppShare(config, result) {
           ].join('');
         }
 
+        // ── 기능 5: 방문자 카운터 ────────────────────────────
+        var visitorHtml = '';
+        if (cfg.ui.visitorBase !== undefined && cfg.ui.visitorText) {
+          var count = getDailyVisitorCount(cfg.ui.visitorBase, cfg.ui.visitorVariance || 3000);
+          visitorHtml = [
+            '<div class="flex items-center justify-center gap-2 mt-3">',
+            '<span class="text-base select-none">👥</span>',
+            '<span class="text-xs font-bold" style="color:var(--accent)">',
+            count, ' ', cfg.ui.visitorText,
+            '</span>',
+            '</div>'
+          ].join('');
+        }
+
         setApp([
           // 배경 그래디언트
           '<div class="min-h-screen flex flex-col items-center justify-center p-5" style="background:linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to));">',
+
+          // 기능 4: 주간 K-트렌드 배너 (히어로 위)
+          weeklyTrendHtml,
 
           // 히어로 이모지
           '<div class="text-6xl mb-3 text-center animate-hero select-none" aria-hidden="true">',
@@ -661,20 +825,25 @@ function openWhatsAppShare(config, result) {
           cfg.ui.appSubtitle,
           '</p>',
 
-          // K-뱃지 (인도네시아 스킨만 — 한국 트렌드 신뢰 마케팅)
+          // K-뱃지
           cfg.ui.koreaBadge ? [
-            '<div class="text-center mb-5">',
+            '<div class="text-center mb-4">',
             '<span class="inline-block px-4 py-1.5 rounded-full text-xs font-black" style="background:rgba(255,255,255,0.28);color:white;letter-spacing:0.02em">',
             cfg.ui.koreaBadge,
             '</span>',
             '</div>'
-          ].join('') : '<div class="mb-4"></div>',
+          ].join('') : '<div class="mb-3"></div>',
 
           // 메인 카드
           '<div class="w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fade-in-up" style="background:var(--card-bg);border:1.5px solid var(--card-border);box-shadow:0 20px 50px var(--shadow-color)">',
+
+          // 카테고리 드롭다운 (인도 스킨)
           selectorHtml,
 
-          // CTA 버튼 (버튼 클릭 = 광고 + 결과 트리거)
+          // 기능 3: 별자리 드롭다운
+          zodiacHtml,
+
+          // CTA 버튼
           '<button id="cta-btn" onclick="window._handleCTAClick()" class="w-full py-4 px-6 rounded-2xl font-black text-lg text-white shadow-lg btn-primary transition-all duration-200 active:scale-95" style="background:var(--btn-primary);box-shadow:0 8px 20px var(--shadow-color)">',
           cfg.ui.ctaButton,
           '</button>',
@@ -683,10 +852,14 @@ function openWhatsAppShare(config, result) {
           '<p class="text-center text-xs mt-3" style="color:var(--accent);opacity:0.7">',
           cfg.ui.ctaSubtext,
           '</p>',
+
+          // 기능 5: 방문자 카운터
+          visitorHtml,
+
           '</div>',
 
           // 푸터
-          '<p class="text-white text-xs mt-8" style="opacity:0.4">© 2024 Global Lucky Vending Machine</p>',
+          '<p class="text-white text-xs mt-8" style="opacity:0.4">© 2025 Global Lucky Vending Machine</p>',
           '</div>'
         ].join(''));
       }
@@ -906,6 +1079,24 @@ function openWhatsAppShare(config, result) {
           // 국가별 결과 카드 내용 (위에서 조립한 HTML)
           resultCardHtml,
 
+          // 기능 1: 오늘의 럭키 아이템 패널 (WhatsApp 버튼 바로 위)
+          (function () {
+            if (!cfg.dailyLuckyItems || !cfg.dailyLuckyItems.length || !cfg.ui.dailyItemTitle) return '';
+            var item = getDailyItem(cfg.dailyLuckyItems);
+            return [
+              '<div class="rounded-2xl p-4 mb-4 text-sm" style="background:linear-gradient(135deg,var(--accent-light),white);border:1.5px solid var(--card-border)">',
+              '<div class="text-xs font-black mb-2" style="color:var(--accent)">', cfg.ui.dailyItemTitle, '</div>',
+              '<div class="flex items-start gap-3">',
+              '<span class="text-3xl flex-shrink-0 select-none">', item.emoji, '</span>',
+              '<div>',
+              '<div class="font-black text-sm mb-1" style="color:var(--accent)">', item.name, '</div>',
+              '<p class="text-xs text-gray-600 leading-relaxed">', item.desc, '</p>',
+              '</div>',
+              '</div>',
+              '</div>'
+            ].join('');
+          })(),
+
           // WhatsApp 공유 버튼 (바이럴 핵심!)
           '<button onclick="window._handleShare()" class="w-full py-4 px-6 rounded-2xl font-black text-base text-white shadow-lg btn-share transition-all duration-200 mt-2" style="background:var(--btn-share, #16a34a);box-shadow:0 8px 20px rgba(22,163,74,0.35)">',
           cfg.ui.shareButton,
@@ -957,10 +1148,15 @@ function openWhatsAppShare(config, result) {
        * 광고 오버레이 → 3초 후 자동으로 결과 화면으로 이동
        */
       window._handleCTAClick = function () {
-        showAdWaiting(); // 대기 화면 표시 (즉시 반응 = UX 퀄리티)
+        // 별자리 선택값 읽기 (기능 3)
+        var zodiacEl = document.getElementById('zodiac-select');
+        var zodiacIndex = zodiacEl ? parseInt(zodiacEl.value, 10) : -1;
+
+        showAdWaiting();
         showInterstitialAd(function () {
-          // 광고 완료 or 3초 폴백 후 실행
-          var result = generateRandomResult(cfg);
+          var result = (zodiacIndex >= 0)
+            ? generateZodiacResult(cfg, zodiacIndex)
+            : generateRandomResult(cfg);
           currentResult = result;
           showResult(result);
         });
