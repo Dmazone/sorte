@@ -671,6 +671,14 @@ var SOCIAL_PLATFORMS = {
     svgPath: '<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>',
     copyOnly: true,
     getUrl: function() { return null; }
+  },
+  messenger: {
+    name: 'Messenger',
+    color: '#0084FF',
+    svgPath: '<path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/>',
+    getUrl: function(text, url) {
+      return 'fb-messenger://share/?link=' + encodeURIComponent(url) + '&app_id=291494419107518';
+    }
   }
 };
 
@@ -1150,6 +1158,48 @@ function openWhatsAppShare(config, result) {
             '</div>',
 
             // 행운 이모지 콤보
+            '<div class="text-center text-4xl mb-2 select-none">', result.luckyEmojiCombo, '</div>'
+          ].join('');
+        }
+
+        // ── 필리핀 스킨 결과 카드 (Anghel Bantay) ────────
+        else if (cfg.country === 'philippines') {
+          resultCardHtml = [
+            // 수호천사 이모지 + 희귀도 배지
+            '<div class="text-center mb-4">',
+            '<div class="text-6xl mb-3 select-none">', result.khodam.emoji, '</div>',
+            '<span class="rarity-badge inline-block rounded-full px-3 py-1 text-xs font-black mb-3" style="background:var(--accent-light);color:var(--accent)">',
+            result.khodam.rarity,
+            '</span>',
+            '</div>',
+
+            // 수호천사 이름 + 성격 태그
+            '<h2 class="text-xl font-black text-center mb-1" style="color:var(--accent)">Anghel Bantay: ', result.khodam.name, '</h2>',
+            '<div class="text-center mb-4">',
+            '<span class="inline-block rounded-full px-4 py-1 text-xs font-bold" style="background:var(--accent-light);color:var(--accent)">',
+            result.khodam.personalityTag,
+            '</span>',
+            '</div>',
+
+            // 수호천사 설명
+            '<div class="rounded-2xl p-4 mb-4 text-sm leading-relaxed text-gray-700" style="background:white;border:1px solid var(--card-border)">',
+            result.khodam.desc,
+            '</div>',
+
+            // K-Food 섹션
+            '<div class="rounded-2xl p-4 mb-4" style="background:white;border:1px solid var(--card-border)">',
+            '<div class="text-xs font-black mb-3" style="color:var(--accent)">🍜 K-Food mo Ngayon</div>',
+            '<div class="flex items-start gap-3">',
+            '<span class="text-3xl flex-shrink-0 select-none">', result.kFood.emoji, '</span>',
+            '<div>',
+            '<div class="font-black text-sm mb-1" style="color:var(--accent)">', result.kFood.name, '</div>',
+            '<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold mb-1" style="background:var(--accent-light);color:var(--accent)">', result.kFood.tag, '</span>',
+            '<p class="text-xs text-gray-600 leading-relaxed">', result.kFood.desc, '</p>',
+            '</div>',
+            '</div>',
+            '</div>',
+
+            // 행운의 이모지 콤보
             '<div class="text-center text-4xl mb-2 select-none">', result.luckyEmojiCombo, '</div>'
           ].join('');
         }
