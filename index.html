@@ -55,6 +55,39 @@
           4. build.js를 다시 실행 (node build.js)
        ★ 광고 코드 없이도 앱은 정상 작동합니다 (3초 폴백 타이머가 대신합니다).
   ──────────────────────────────────────────────────────── -->
+  <script>
+  /* UX Guard: Monetag vignette(ekhay zone 11297409) 차단 — InPage Push·팝언더 수익은 유지 */
+  (function () {
+    function sweep() {
+      document.querySelectorAll('iframe').forEach(function (f) {
+        try {
+          var s = f.src || '';
+          if (s.indexOf('ekhay') !== -1 || s.indexOf('vignette') !== -1) {
+            var p = f.parentElement;
+            f.remove();
+            if (p && p !== document.body && p.childElementCount === 0) p.remove();
+          }
+        } catch (e) {}
+      });
+      document.querySelectorAll('div').forEach(function (d) {
+        if (d.id === 'ad-overlay') return;
+        try {
+          var cs = window.getComputedStyle(d);
+          if (cs.position === 'fixed' && parseInt(cs.zIndex) > 99990 && d.querySelector('iframe')) {
+            d.remove();
+          }
+        } catch (e) {}
+      });
+    }
+    var obs = new MutationObserver(sweep);
+    function start() {
+      obs.observe(document.body, { childList: true, subtree: true });
+      var n = 0;
+      (function tick() { sweep(); if (++n < 20) setTimeout(tick, 500); })();
+    }
+    document.body ? start() : document.addEventListener('DOMContentLoaded', start);
+  })();
+  </script>
   <script src="https://pl30266860.effectivecpmnetwork.com/18/6a/c8/186ac8497a54269d48446588828ff834.js"></script>
 <script src="https://pl30266863.effectivecpmnetwork.com/b0/f9/5c/b0f95c6659075e426bc04c507ff6ae00.js"></script>
 <script src="https://quge5.com/88/tag.min.js" data-zone="259796" async data-cfasync="false"></script>
